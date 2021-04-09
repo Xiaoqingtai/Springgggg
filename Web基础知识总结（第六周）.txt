@@ -1,0 +1,66 @@
+1.C/S   客户端/服务器模式
+   B/S   浏览器/服务器模式
+
+2.get提交不使用URL加密，post会加密
+
+3.text  文本框
+   radio  定义单选按钮输入（多选一）
+   submit  定义提交按钮
+   select  下拉列表（option 定义下拉列表选项） 
+   output（只支持huml5版本）  定义不同类型输出
+
+4.建立表
+<table border="表名">
+<tr>
+       <th>xxx</th>
+       <th>xx</th>
+</tr>
+<tr>
+       <th>aaa</th>
+       <th>bb</th>
+</tr>
+</table>
+
+5.DOM：文档对象模型（处理网页内容的方法及接口）
+   BOM：浏览器对象模型（描述与浏览器交互的方法及接口）
+
+6.常用方法
+window.alert()警告框
+document.write()写入html输出
+innerHTML  写入HTML元素
+console.log()  写入浏览器控制台
+
+7.数据类型
+var length = 7;    数字型
+var LastName = "Gates";   字符串
+var cars = ["Porsche","Gates"];    数组
+var x = {firstName:"Bill",lastName:"Gates"};    对象
+
+8.字符类型（无需转换直接用var）
+var x;--->x为uninitiallized
+var x = 7;--->x为数值
+var x = "Bill";--->x为字符串
+
+9.★Js中不分单双引号
+★Js调用参数及返回值类型无需定义
+
+10.函数调用
+function name(参数1，参数2){
+执行算法；}
+
+11.数组（语法）
+var array-name = [item1,item2];
+
+12.事件驱动
+onchange  Html元素已改变
+onclick  用户点击了html元素
+onmouseover  用户将鼠标放在HTML元素上
+onmouseout  用户将鼠标离开HTML元素
+onkeydown  用户按下键盘按键
+
+13.★this关键字
+方法中：this指所有者对象
+单独：this指全局对象
+函数中：this指全局对象
+事件中：this指接受事件的元素
+浏览器窗口中，全局对象为 object window
