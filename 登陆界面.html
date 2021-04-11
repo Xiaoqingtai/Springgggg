@@ -1,0 +1,51 @@
+<html>
+	<head>
+          <meta charset="utf-8">
+          <title>登陆界面</title>
+		 <!--  1.引入jquery-->
+        <script src="jquery-1.9.1.min.js"></script>
+		<script>
+            function myck(type) {
+                var name = jQuery("#name");
+                var password = jQuery("#password");
+                if(type==2){
+                    // 清空操作
+                    if(confirm("确认清空吗？")){
+                        name.val("");
+                        password.val("");
+                        jQuery("#resultDiv").html("");
+                    }
+                    return false;
+                }
+                // 非空效验
+                if(name.val()==""){
+                    alert("请先输入姓名");
+                    return false;
+                }else{
+					window.location.href="file:///C:/Users/SJYya/Desktop/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%BA%93.html";
+				}
+                if(password.val()==""){
+                    alert("请先输入密码");
+                    return false;
+                }
+            }
+        </script>
+		<script> 
+			var p =documment.getElementById("登录")
+			 p.onmouseover function(){
+			 alert("请登录")
+			 }</script>
+	</head>
+<body>
+		 <div style="text-align:center;">
+		   <h1>登&nbsp; &nbsp; &nbsp; &nbsp;录</a></h1>
+		     姓&nbsp; &nbsp;名：
+		     <input id="name" type="text" placeholder="username" name="username"><p></p>
+			 密&nbsp; &nbsp;码：
+		    <input id="password" type="password " placeholder="password" name="password"><p></p>
+	        <input type="button" value=" 登 录 " onclick="myck(1)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <input type="button" value=" 清 空 " onclick="myck(2)">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <input type="button" value=" 注 册 " onclick="myck(3)">
+</div>
+</body>
+</html>
