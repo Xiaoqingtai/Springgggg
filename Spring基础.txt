@@ -1,0 +1,43 @@
+1.Spring框架介绍
+1.1容器与框架的概念
+(1)什么是容器？Servlet能否独立运行？
+Servlet：主要功能在于交互式地浏览和生成数据，生成动态Web内容。运行于支持Java的应用服务器中。从原理上讲，Servlet可以响应任何类型的请求，但绝大多数情况下Servlet只用来扩展基于HTTP协议的Web服务器。
+(2)客户端与Servlet交互过程
+(3)什么是框架？
+LDAP：轻量级目录访问协议(Lightweight Directory Access Protocol，LDAP)
+框架不仅要负责管理某些Bean的生命周期（容器的功能），还需要负责搭建某些基础设施（那些通用的部分）
+1.2 Spring模块
+核心容器(Core Container):由spring-core, spring-beans,spring-context,spring-context-support和spring-expression(Spring Expression Language)组成。
+Spring-core和Spring-Beans是框架的基础，主要实现了控制反转(IOC)和依赖注入(DI)。（完成部分对象生命周期管理）
+AOP(Aspect Oriented Programming)面向切面编程
+Spring-AOP提供了一个AOP面向切面编程的实现。
+Spring-aspects模块提供了与AspectJ的继承。
+消息发送
+Spring4 包含了Spring-messaging模块，对Spring集成项目Message、MessageChannel和MessageHandler进行重要的抽象，是基于消息发送应用的基础。
+数据访问/集成: Spring-JDBc,ORM,OXM JMS和事物spring-tx模块。
+-ORM:(Object Relation Mapper,ORM)
+-OXM:O 代表 Object，X 代表 XML。它的目的是在 Java 对象（几乎总是一个 plain old Java object，或简写为 POJO）和 XML 文档之间来回转换。
+-JMS:JMS即Java消息服务（Java Message Service）应用程序接口，是一个Java平台中关于面向消息中间件（MOM）的API，用于在两个应用程序之间，或分布式系统中发送消息，进行异步通信。
+Web:webmvc(重点),Spring-websocket和spring-webflux。
+测试：Spring-test.
+2.依赖注入DI与控制反转IOC
+2.1 依赖注入
+在面向对象程序设计中，主要关系有泛化(继承)、聚合/组合，关联和依赖关系。依赖关系比较常见，但是种依赖关系不符合软件系统设计中的高内聚低耦合原则。
+依赖注入，就是为了在软件系统中实现解耦(或降低模块之间的耦合关系)，提高组件重用率，并且为系统搭建一个灵活、可扩展的平台。
+依赖关系实现
+class A{
+    B b;
+    public void test(){
+       b = new B();
+       b.do();
+	}
+}
+class B{
+	public void do(){
+	      System.out.println(“wo shi shei?”);	
+	}
+}
+在test()方法中调用了B类的do()方法，也就是A依赖B，但是方法的调用，需要用到B的对象b，所以，这里就用new B()对b进行了实例化。即对象b的创建由A自己来完成。
+2.2 控制反转
+把控制权交出去。通过控制反转，实现依赖注入
+有别于前面的b的创建由A来完成，这里把b的创建交给IOC容器完成，即实现了控制权的反转（本来由A自己控制的，但交个了IOC容器）。在A中用到b时，由IOC容器将B注入到A。可以利用Java反射技术实现。
