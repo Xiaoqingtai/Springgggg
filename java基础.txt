@@ -1,0 +1,51 @@
+# 一、Java基础
+## 1.注解
+
+### 1.1概念
+&nbsp;&nbsp;&nbsp;&nbsp;他提供了一种安全的类似注释的机制，用来将任何的信息或元数据与程序进行关联。直观明了的说，注解就是信息与程序的业务逻辑无关，并且供指定的工具或框架使用。
+&nbsp;&nbsp;&nbsp;&nbsp;**Java注解是附加在代码中的一些元信息，便于一些工具在编译、运行时进行解析和使用，起到说明、配置的功能。** 它不会也不能影响代码的实际逻辑，仅仅起到辅助性的作用，包含在java.lang.annotation包中。
+### 1.2内置注解
+&nbsp;&nbsp;&nbsp;&nbsp;常用注解列举
+&nbsp;&nbsp;&nbsp;&nbsp;@Override：提示子类要**复写**父类中被它修饰的方法；
+&nbsp;&nbsp;&nbsp;&nbsp;@Suppress Warnnings:组织**警告**；
+&nbsp;&nbsp;&nbsp;&nbsp;@FunctionalInterface：函数式**接口注解**（Java1.8版本引入）,是一个具有一个方法的普通接口
+### 1.3元注解
+&nbsp;&nbsp;&nbsp;&nbsp;基础知识再现：
+&nbsp;&nbsp;&nbsp;&nbsp;@Retention：定义**生命周期**
+&nbsp;&nbsp;&nbsp;&nbsp;（RetentionPolicy.SOURCE:在编译阶段丢弃。）
+&nbsp;&nbsp;&nbsp;&nbsp;（RetentionPolicy.CLASS：在类加载时丢弃。）
+&nbsp;&nbsp;&nbsp;&nbsp;（RetentionPolicy.RUNTIME：始终不丢弃,最常用。）
+&nbsp;&nbsp;&nbsp;&nbsp;@Target：（类、方法、局部变量或成员变量、参数等）**用于什么地方**
+&nbsp;&nbsp;&nbsp;&nbsp;@Documented：注解是否包含在**JavaDoc**中；
+&nbsp;&nbsp;&nbsp;&nbsp;@Inherited：是否允许**子类继承**该注解；
+&nbsp;&nbsp;&nbsp;&nbsp;（父类P有注解A，如果A用@Inherited修饰，那么子类C也继承父类的注解A）
+&nbsp;&nbsp;&nbsp;&nbsp;@Repeatable：指定注解可**重复使用**。
+### 1.4自定义注解
+#### 1.4.1定义CustomDescription注解
+**注意：**
+
+ 1. 自定义注解中，注解的成员变量义无参数的方法形式声明
+ 2. CustomDescriptions.class为注解容器
+ 3. 若注解（非容器）中有一个Value属性，则在使用注解时直接把值写入括号内，而作为容器则需要将属性定义为数组
+#### 1.4.2实现继承关系
+建立两个类分别添加1、2个注解
+
+
+```
+Person：
+package CusAnnontation;
+@CustomDescription（description="基类"）
+@CustomDescription（description="人"）
+public class Person{
+......
+}
+Student:
+package CusAnnontation;
+@CustomDescription（"学生"）
+```
+由上方举例可看出如果只有一个value属性可直接写在引号内，多个则需要区分
+### 1.5注解使用场景经介绍
+ 1. 使用注解做bean的属性值校验
+ 2. 使用注解做权限控制
+ 3. 代替配置文件功能，像Spring基于注解的配置，减少了xml的配置
+ 4. 可以生成文档，像Java代码注释中的@see、@param等
